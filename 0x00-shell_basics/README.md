@@ -15,4 +15,8 @@
 - 12-file_type: This prints the type of the file named iamafile, which exists in the /etmp directory.
 - 13-symbolic_link: This creates a symbolic link to /bin/ls, named __ls__ in the current working directory.
 - 14-copy_html: This copies all the HTML files from the curreent working directory to the parent of the working directory, but only copies files that did not exist in the parent of the working directory or were newer than the versions in the parent of the working directory.
-- 15
+- **100-lets_move**: This moves all the files beginning with an upper case letter to the directory /tmp/u.
+- **101-clean_emacs**: This deletes all the files in the current working directory that ends with the character ~.
+- **102-tree**: This creates the directories welcome/, welcome/to/ and welcome/to/school/ in the current directory.
+- **103-commas**: This lists all the files and directories of the current directory, separated by commas (,).
+- **school.mgc**: This file can be used with the command <mark>file<mark/> to detect <mark>School<mark/> data files, where the <mark>School<mark/> data files always contain the string <mark>SCHOOL<mark/> at offset 0.
