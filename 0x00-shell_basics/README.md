@@ -12,4 +12,5 @@
 - 9-firstdirdeletion: This deletes the directory my_first_directory that is within the /tmp directory.
 - 10-back: This changes the current working directory to the previous one.
 - 11-lists: This lists all files (even the ones with names beginning with a period character, which are normally hidden) in the current directory and the parent of the working directory and the /boot directory (in this order), in the long format.
-- 12-
+- 12-file_type: This prints the type of the file named iamafile, which exists in the /etmp directory.
+- 13-
