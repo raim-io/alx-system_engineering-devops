@@ -8,4 +8,5 @@
 - 5-listfilesdigitonly: This displays directory contents in long format, with user and group IDs displayed numerically, including the hidden files.
 - 6-firstdirectory: This creates a directory named my_first_directory in the /tmp/ directory.
 - 7-movethatfile: This moves the file betty from /tmp/ to /tmp/my_first_directory.
+- 8-firstdelete: This deletes the file betty from the directory /tmp/my_first_directory. 
 - 
