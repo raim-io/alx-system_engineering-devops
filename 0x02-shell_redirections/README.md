@@ -24,6 +24,4 @@
 - 17-hidethisword: This displays all the lines in the file /etc/passwd that do not contain the pattern “bin”.
 - 18-letteronly: This displays all lines of the file /etc/ssh/sshd_config starting with a letter.
 - 19-AZ: This replaces all characters A and c from input to Z and e respectively.
-- 20-hiago: This removes all letters c and C from input.
-- 21-reverse: This reverses it's input.
-- 22-users_and_homes: This displays all users and their home directories, sorted by users.
+- 
