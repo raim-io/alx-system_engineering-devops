@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -v --line-buffered -n '.*' input.txt | grep -e '^[02468]:'
+paste - - | cut -f1
