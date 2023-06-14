@@ -1,2 +1,2 @@
 #!/bin/bash
-[ $(stat -c '%U' hello) = "guillaume" ] -exec chown betty hello
+sudo chown --from=guillaume betty hello \n
