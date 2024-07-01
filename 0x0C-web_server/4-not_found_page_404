@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Install nginx web server and configure 301 and 404 redirects
+
+# Update package list and install nginx
+apt-get -y update
+apt-get -y install nginx
+
+# Create the HTML file in the correct directory
+echo "Hello World!" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+# Configure nginx server block
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+
+    error_page 404 /404.html;
+    location /404 {
+        root /var/www/html;
+        internal;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Create a symbolic link to enable the site
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Start nginx service
+service nginx start
