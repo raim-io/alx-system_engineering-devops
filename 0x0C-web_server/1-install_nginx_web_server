@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Install ngnix web server
+
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginix HTTP'
+echo '<h1>Hello World!</h1>' > /var/www/html/index.html
+service ngnix start
