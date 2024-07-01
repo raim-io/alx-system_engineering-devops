@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
-# Install ngnix web server and configure redirects
+# Install nginx web server and configure redirects
 
+# Update package list and install nginx
 apt-get -y update
 apt-get -y install nginx
 
-echo 'Hello World!' > /var/nginx/html/index.html
+# Create the HTML file in the correct directory
+echo 'Hello World!' > /var/www/html/index.html
+
+# Configure nginx server block
 printf %s "server {
     listen 80;
     listen [::]:80 default_server;
-    root /etc/nginx/html;
+    root /var/www/html;
     index index.html index.htm;
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4
-    }
-}" > /etc/nginx/site-available/default
 
-service ngnix start
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" > /etc/nginx/sites-available/default
+
+# Create a symbolic link to enable the site
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Start nginx service
+service nginx start
