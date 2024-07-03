@@ -1,41 +1,20 @@
-# Define a class for Nginx configuration
-class nginx_config {
-
-  # Package installation and service management
-  package { 'nginx':
-    ensure => installed,
-  }
-
-  service { 'nginx':
-    ensure  => running,
-    enable  => true,
-    require => Package['nginx'],
-  }
-
-  # Nginx server configuration file
-  file { '/etc/nginx/sites-available/default':
-    ensure  => present,
-    content => template('nginx/default.erb'),
-    require => Package['nginx'],
-    notify  => Service['nginx'],
-  }
-
-  # Symbolic link to enable the site
-  file { '/etc/nginx/sites-enabled/default':
-    ensure => link,
-    target => '/etc/nginx/sites-available/default',
-    require => File['/etc/nginx/sites-available/default'],
-    notify => Service['nginx'],
-  }
-
-  # Default index.html file
-  file { '/var/www/html/index.html':
-    ensure  => present,
-    content => "Hello World!\n",
-    require => Package['nginx'],
-    notify  => Service['nginx'],
-  }
+# Install Nginx web server (w/ Puppet)
+package { 'nginx':
+  ensure => installed,
 }
 
-# Apply the nginx_config class to configure Nginx
-include nginx_config
+file_line { 'aaaaa':
+  ensure => 'present',
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+}
+
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
+
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
