@@ -3,6 +3,7 @@
 
 import requests
 import sys
+import csv
 
 
 if __name__ == "__main__":
@@ -11,9 +12,8 @@ if __name__ == "__main__":
     userTodoList = requests.get(
         hostname + "/todos", params={"userId": sys.argv[1]}).json()
 
-    completedTasks = [task.get(
-        "title") for task in userTodoList if task.get("completed") is True]
-
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get('name'), len(completedTasks), len(userTodoList)))
-    [print("\t {}".format(task)) for task in completedTasks]
+    with open("{}.csv".format(sys.argv[1]), "w", newline="") as csvFile:
+        csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)
+        [csvWriter.writerow(
+            [sys.argv[1], user.get("name"),
+             task.get("title")]) for task in userTodoList]
