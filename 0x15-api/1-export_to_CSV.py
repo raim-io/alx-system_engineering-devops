@@ -15,5 +15,5 @@ if __name__ == "__main__":
     with open("{}.csv".format(sys.argv[1]), "w", newline="") as csvFile:
         csvWriter = csv.writer(csvFile, quoting=csv.QUOTE_ALL)
         [csvWriter.writerow(
-            [sys.argv[1], user.get("username"),
+            [sys.argv[1], user.get("username"), task.get("completed"),
              task.get("title")]) for task in userTodoList]
